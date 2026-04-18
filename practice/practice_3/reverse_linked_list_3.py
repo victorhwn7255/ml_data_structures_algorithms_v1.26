@@ -7,13 +7,14 @@ def reverseList(head: ListNode):
   if head is None:
     return None
   
-  prev = None
   current = head
+  prev = None
   
-  while current is not None:
+  while current:
     next_node = current.next
     current.next = prev
     prev = current
     current = next_node
   
   return prev
+
