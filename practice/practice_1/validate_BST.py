@@ -1,0 +1,21 @@
+class TreeNode:
+  def __init__(self, val=0, left=None, right=None):
+    self.val = val
+    self.left = left
+    self.right = right
+    
+def isValidBST(root: TreeNode):
+  
+  def dfs(node: TreeNode, lower_bound, upper_bound):
+    if node is None:
+      return True
+    
+    if not (lower_bound < node.val < upper_bound):
+      return False
+    
+    return (
+      dfs(node.left, lower_bound, node.val) and
+      dfs(node.right, node.val, upper_bound)
+    )
+  
+  return dfs(root, float("-inf"), float("inf"))
