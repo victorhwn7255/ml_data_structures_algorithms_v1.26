@@ -28,7 +28,7 @@ def zigzagLevelOrder(root: TreeNode):
       if left_to_right % 2 == 0:
         level.appendleft(node.val)
 
-    results.append(level)
+    results.append(list(level))
     left_to_right += 1
 
   return results
