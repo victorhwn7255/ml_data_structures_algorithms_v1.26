@@ -1,11 +1,13 @@
 def canJump(nums: list[int]):
-  dp = [False] * len(nums)
-  dp[0] = True
+  furthest = nums[0]
+  length = len(nums)
   
-  for i in range(1, len(nums)):
-    for j in range(i):
-      if dp[j] and j + nums[j] >= i:
-        dp[i] = True
-        break
+  for i in range(1, length):
+    if furthest == 0:
+      return False
+    
+    furthest = max(furthest-1, nums[i])
   
-  return dp[-1]
+  return True
+
+print(canJump([3,2,1,0,4]))
